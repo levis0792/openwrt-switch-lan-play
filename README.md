@@ -1,4 +1,6 @@
 # Install
+Current openwrt version is 19.07.7
+
 Add below link to your custom feeds:
 
 + https://htynkn.github.io/openwrt-switch-lan-play/openwrt/x86/64
