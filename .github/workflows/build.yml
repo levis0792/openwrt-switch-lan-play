@@ -7,52 +7,13 @@ on:
     branches: [ master ]
 
 jobs:
-  ramips_mt7620:
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v2
-    - name: Get secret key
-      run: 'echo "$SECRET_KEY" > secrets.key'
-      shell: bash
-      env:
-        SECRET_KEY: ${{secrets.SECRET_KEY}}
-    - name: Build ipk
-      run: ./build.sh https://downloads.openwrt.org/releases/19.07.7/targets/ramips/mt7620/openwrt-sdk-19.07.7-ramips-mt7620_gcc-7.5.0_musl.Linux-x86_64.tar.xz ramips/mt7620
-
-    - name: Save ipk
-      uses: actions/upload-artifact@v1
-      with:
-          name: ramips_mt7620
-          path: target.zip
-
-  ramips_mt7621:
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v2
-    - name: Get secret key
-      run: 'echo "$SECRET_KEY" > secrets.key'
-      shell: bash
-      env:
-        SECRET_KEY: ${{secrets.SECRET_KEY}}
-
-    - name: Build ipk
-      run: ./build.sh https://downloads.openwrt.org/releases/19.07.7/targets/ramips/mt7621/openwrt-sdk-19.07.7-ramips-mt7621_gcc-7.5.0_musl.Linux-x86_64.tar.xz ramips/mt7621
-
-    - name: Save ipk
-      uses: actions/upload-artifact@v1
-      with:
-          name: ramips_mt7621
-          path: target.zip
-
   x86_64:
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
     - name: Get secret key
-      run: 'echo "$SECRET_KEY" > secrets.key'
+      run: 'echo "$SECRET_KEY" > public.key'
       shell: bash
       env:
         SECRET_KEY: ${{secrets.SECRET_KEY}}
@@ -63,40 +24,4 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
           name: x86_64
-          path: target.zip
-  ramips_rt3883:
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v2
-    - name: Get secret key
-      run: 'echo "$SECRET_KEY" > secrets.key'
-      shell: bash
-      env:
-        SECRET_KEY: ${{secrets.SECRET_KEY}}
-    - name: Build ipk
-      run: ./build.sh https://downloads.openwrt.org/releases/19.07.7/targets/ramips/rt3883/openwrt-sdk-19.07.7-ramips-rt3883_gcc-7.5.0_musl.Linux-x86_64.tar.xz ramips_rt3883
-
-    - name: Save ipk
-      uses: actions/upload-artifact@v1
-      with:
-          name: ramips_rt3883
-          path: target.zip
-  armvirt_64:
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v2
-    - name: Get secret key
-      run: 'echo "$SECRET_KEY" > secrets.key'
-      shell: bash
-      env:
-        SECRET_KEY: ${{secrets.SECRET_KEY}}
-    - name: Build ipk
-      run: ./build.sh https://downloads.openwrt.org/releases/19.07.7/targets/armvirt/64/openwrt-sdk-19.07.7-armvirt-64_gcc-7.5.0_musl.Linux-x86_64.tar.xz armvirt_64
-
-    - name: Save ipk
-      uses: actions/upload-artifact@v1
-      with:
-          name: armvirt_64
           path: target.zip
